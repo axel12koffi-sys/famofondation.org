@@ -33,6 +33,9 @@ html{scroll-behavior:smooth;}
 .skip-link:focus{top:12px;}
 body{
   margin:0;
+  /* Le panneau de menu mobile est positionné hors écran : sans cela,
+     la page défile horizontalement entre 600 et 980 px de large. */
+  overflow-x:hidden;
   background:var(--cream);
   color:var(--ink);
   font-family:'Work Sans',sans-serif;
@@ -157,10 +160,12 @@ p{margin:0 0 1em;}
     background:var(--cream);
     flex-direction:column; align-items:flex-start;
     padding:24px; gap:2px;
-    transform:translateX(100%); transition:transform .35s ease;
+    transform:translateX(100%); transition:transform .35s ease, visibility .35s;
     overflow-y:auto; z-index:49;
+    /* Fermé, le menu sort aussi du parcours clavier et des lecteurs d'écran. */
+    visibility:hidden;
   }
-  .site-nav.open{transform:translateX(0);}
+  .site-nav.open{transform:translateX(0); visibility:visible;}
   .nav-item{width:100%;}
   .nav-link{display:block; font-size:1.05rem; padding:14px 8px;}
   .dropdown{position:static; opacity:1; visibility:visible; transform:none;
