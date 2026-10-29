@@ -183,4 +183,32 @@
     <lastmod>2026-10-29</lastmod>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://famofondation.org/mentions-legales</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://famofondation.org/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://famofondation.org/en/legal-notice"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://famofondation.org/en/legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://famofondation.org/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://famofondation.org/en/legal-notice"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://famofondation.org/confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://famofondation.org/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://famofondation.org/en/privacy"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://famofondation.org/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://famofondation.org/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://famofondation.org/en/privacy"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.3</priority>
+  </url>
 </urlset>
