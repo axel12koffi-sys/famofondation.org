@@ -26,3 +26,16 @@ les identifiants de base de données.
 
 Aucune dépendance, aucune compilation. Ouvrir `index.html` dans un navigateur,
 ou servir le dossier avec n'importe quel serveur statique.
+
+## Modifier le CSS ou le JavaScript
+
+`.htaccess` met en cache les feuilles de style, les scripts et les images pour
+un an. Les liens vers `style.css`, `config.js` et `main.js` portent donc un
+numéro de version (`?v=20261029`) : **incrémentez-le dans toutes les pages à
+chaque modification de ces fichiers**, sinon les visiteurs déjà venus
+continueront de charger l'ancienne version.
+
+```bash
+# remplacer AAAAMMJJ par la date du jour
+sed -i 's/?v=[0-9]\{8\}/?v=AAAAMMJJ/g' *.html en/*.html
+```
