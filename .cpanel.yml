@@ -4,6 +4,9 @@ deployment:
     # Le site est déployé depuis la racine du dépôt vers public_html.
     # $HOME évite d'avoir à écrire le nom d'utilisateur cPanel en dur.
     - export DEPLOYPATH=$HOME/public_html
+    # Garde-fou : tant que le site n'est pas dans le dépôt, on arrête ici.
+    # Sans cela, la synchronisation avec --delete viderait public_html.
+    - /usr/bin/test -f $HOME/repositories/famofondation.org/index.html
     - /bin/mkdir -p $DEPLOYPATH
     - >-
       /bin/rsync -a --delete
