@@ -1,0 +1,13 @@
+---
+deployment:
+  tasks:
+    # Le site est déployé depuis la racine du dépôt vers public_html.
+    # $HOME évite d'avoir à écrire le nom d'utilisateur cPanel en dur.
+    - export DEPLOYPATH=$HOME/public_html
+    - /bin/mkdir -p $DEPLOYPATH
+    - >-
+      /bin/rsync -a --delete
+      --exclude '.git' --exclude '.cpanel.yml' --exclude '.gitignore'
+      --exclude 'README.md' --exclude 'docs/'
+      --exclude 'backend/config.php' --exclude '.well-known/'
+      $HOME/repositories/famofondation.org/ $DEPLOYPATH/

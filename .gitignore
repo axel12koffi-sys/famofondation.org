@@ -1,0 +1,11 @@
+# Configuration locale et secrets
+backend/config.php
+.env
+
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archives
+*.zip
