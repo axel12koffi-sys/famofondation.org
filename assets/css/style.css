@@ -274,6 +274,9 @@ p{margin:0 0 1em;}
 .quote-band cite{font-style:normal; font-weight:600; color:var(--red-deep);}
 .quote-band .role{display:block; font-size:.88rem; color:var(--ink-soft); font-weight:400;}
 .portrait{border-radius:var(--radius); max-width:380px; margin:0 auto;}
+/* Citation sans portrait : une seule colonne, centrée. */
+.quote-centre{text-align:center;}
+.quote-centre blockquote{margin-left:auto; margin-right:auto;}
 
 /* ---------- Galerie ---------- */
 .gallery{max-width:var(--shell); margin:0 auto;
