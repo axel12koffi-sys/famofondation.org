@@ -1,0 +1,29 @@
+# Fondation FAMO — .htaccess (racine du site)
+# À placer dans public_html/ une fois le certificat SSL activé (voir ci-dessous).
+
+# Forcer HTTPS sur tout le site
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Masquer l'extension .html dans les URLs
+# 1) Rediriger /page.html -> /page (redirection permanente, une seule URL canonique)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 2) Servir en interne /page.html quand /page est demandé
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^.]+)$ $1.html [L]
+
+# En-têtes de sécurité de base
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Empêcher l'accès direct aux fichiers sensibles du backend
+<FilesMatch "^(config\.php|config\.example\.php|schema\.sql|webhook-zeffy\.log)$">
+  Require all denied
+</FilesMatch>
