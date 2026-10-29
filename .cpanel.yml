@@ -8,11 +8,19 @@ deployment:
     # Sans cela, la synchronisation avec --delete viderait public_html.
     - /usr/bin/test -f $HOME/repositories/famofondation.org/index.html
     - /bin/mkdir -p $DEPLOYPATH
+    # --chmod impose des droits lisibles par Apache : sans cela, les fichiers
+    # héritent de l'umask du compte et un .htaccess illisible fait répondre
+    # « Server unable to read htaccess file » en 403 sur tout le site.
     - >-
-      /bin/rsync -a --delete
+      /bin/rsync -a --delete --chmod=D755,F644
       --exclude '.git' --exclude '.cpanel.yml' --exclude '.gitignore'
       --exclude 'README.md' --exclude 'docs/'
       --exclude 'backend/config.php' --exclude '.well-known/'
       --exclude 'php.ini' --exclude '.user.ini' --exclude 'cgi-bin/'
       --exclude 'logs/' --exclude 'backend/webhook-zeffy.log'
       $HOME/repositories/famofondation.org/ $DEPLOYPATH/
+    # Filet de sécurité, au cas où rsync n'appliquerait pas --chmod
+    - /bin/chmod 755 $DEPLOYPATH
+    - /bin/chmod 644 $DEPLOYPATH/.htaccess
+    - /usr/bin/find $DEPLOYPATH -type d -exec /bin/chmod 755 {} +
+    - /usr/bin/find $DEPLOYPATH -type f -exec /bin/chmod 644 {} +
