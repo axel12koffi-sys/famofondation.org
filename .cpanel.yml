@@ -13,4 +13,6 @@ deployment:
       --exclude '.git' --exclude '.cpanel.yml' --exclude '.gitignore'
       --exclude 'README.md' --exclude 'docs/'
       --exclude 'backend/config.php' --exclude '.well-known/'
+      --exclude 'php.ini' --exclude '.user.ini' --exclude 'cgi-bin/'
+      --exclude 'logs/' --exclude 'backend/webhook-zeffy.log'
       $HOME/repositories/famofondation.org/ $DEPLOYPATH/
