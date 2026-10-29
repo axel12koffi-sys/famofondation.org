@@ -141,6 +141,15 @@
     giveBtn.addEventListener('click', function (ev) {
       var amount = selectedAmount;
 
+      /* Zeffy : le script d'intégration ouvre le formulaire en fenêtre
+         superposée. Sans cela, le lien du bouton s'ouvrait en plus dans un
+         nouvel onglet : le visiteur se retrouvait avec deux formulaires.
+         Le lien reste actif si le script tiers n'a pas pu se charger. */
+      if (cfg.mode === 'zeffy' && window.FAMO_ZEFFY_PRET) {
+        ev.preventDefault();
+        return;
+      }
+
       /* Stripe : lien du montant selon la fréquence, sinon lien "montant libre" */
       if (cfg.mode === 'stripe' && cfg.stripe) {
         var table = (frequency === 'monthly' ? cfg.stripe.monthly : cfg.stripe.once) || {};
