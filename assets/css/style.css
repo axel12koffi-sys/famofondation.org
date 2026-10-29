@@ -73,8 +73,8 @@ p{margin:0 0 1em;}
   padding:14px clamp(20px,5vw,64px);
   gap:24px;
 }
-.logo img{height:44px; width:auto;}
-.logo-dark{filter:brightness(.35) sepia(1) hue-rotate(-25deg) saturate(4);}
+/* Le logo est servi dans ses couleurs d'origine : plus de filtre de teinte. */
+.logo img{height:46px; width:auto;}
 
 .site-nav{display:flex; align-items:center; gap:6px;}
 .nav-item{position:relative;}
